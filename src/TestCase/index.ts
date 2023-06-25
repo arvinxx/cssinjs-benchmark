@@ -96,7 +96,7 @@ export const TestCases: Usage[] = [
     ],
   },
   {
-    name: 'Material UI V4',
+    name: 'Material UI V5',
     cases: [
       {
         name: 'MUI Static',
