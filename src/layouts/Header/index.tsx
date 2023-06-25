@@ -26,7 +26,7 @@ const Header: FC = () => {
 
         <Segmented
           options={[
-            { label: 'Large Content 测试', value: 'largeContent' },
+            { label: 'Basic 测试', value: 'largeContent' },
             { label: 'ReRender 测试', value: 'rerender' },
           ]}
         />

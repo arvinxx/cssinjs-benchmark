@@ -1,64 +1,27 @@
-import { PlayCircleOutlined } from '@ant-design/icons';
-import { App, Button, Card, Descriptions, Divider } from 'antd';
-import { createStyles } from 'antd-style';
-import { useCallback, useState } from 'react';
+import { Divider } from 'antd';
+import { useState } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
+import TestCard from '@/components/TestCard';
 import { TestResult } from '@/components/TestResult';
 
 import { useSettings } from '@/stores/settings';
 import { demoPathPrefix, TestCases } from './TestCase';
 
-const useStyles = createStyles(({ css, token }) => {
-  return {
-    container: css`
-      padding: 24px;
-      min-height: 100vh;
-      background: ${token.colorBgLayout};
-    `,
-  };
-});
-
 export default () => {
-  const { styles } = useStyles();
   const [runCount, setRunCount] = useState(0);
   const NUM_CARDS = useSettings((s) => s.cardNumber);
 
-  const onClickRun = useCallback(() => {
-    let nextRunCount = runCount + 1;
-    setRunCount(-1);
-    setTimeout(() => {
-      setRunCount(nextRunCount);
-    }, 100);
-  }, [runCount]);
-
   return (
-    <App className={styles.container}>
-      <Card
-        title={'单次渲染性能对比'}
-        extra={
-          <Button
-            type={'primary'}
-            icon={<PlayCircleOutlined />}
-            onClick={onClickRun}
-            loading={runCount === -1}
-          >
-            {runCount > 0 ? '重新运行' : '运行测试'}
-          </Button>
-        }
-      >
-        <Descriptions layout={'vertical'}>
-          <Descriptions.Item label={'测试方式'}>
-            渲染 {NUM_CARDS} 相同张卡片
-          </Descriptions.Item>
-          <Descriptions.Item label={'统计指标'}>
-            使用 React 的 &lt;Profiler /&gt; 组件统计渲染完成时间
-          </Descriptions.Item>
-          <Descriptions.Item label={'测试目的'}>
-            验证相同样式的渲染逻辑在不同的样式库中的性能表现
-          </Descriptions.Item>
-        </Descriptions>
-      </Card>
+    <>
+      <TestCard
+        title={'单次渲染基础性能对比'}
+        runCount={runCount}
+        onRunCountChange={setRunCount}
+        testIndex={'使用 React 的 <Profiler /> 组件统计渲染完成时间'}
+        testMethod={`渲染 ${NUM_CARDS} 相同张卡片`}
+        testObject={'验证相同样式的渲染逻辑在不同的样式库中的性能表现'}
+      />
 
       {runCount > 0 && (
         <Flexbox style={{ marginTop: 12 }}>
@@ -70,6 +33,6 @@ export default () => {
           />
         </Flexbox>
       )}
-    </App>
+    </>
   );
 };
