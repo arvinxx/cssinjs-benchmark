@@ -4,8 +4,10 @@ import { createStyles } from 'antd-style';
 import { useCallback, useState } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
-import { TestResult } from './components/TestResult';
+import { TestResult } from '@/components/TestResult';
 import { NUM_CARDS } from './const';
+
+import { TestCases } from '../TestCase';
 
 const useStyles = createStyles(({ css, token }) => {
   return {
@@ -45,7 +47,9 @@ export default () => {
         }
       >
         <Descriptions layout={'vertical'}>
-          <Descriptions.Item label={'测试基准'}>渲染 {NUM_CARDS} 张卡片</Descriptions.Item>
+          <Descriptions.Item label={'测试基准'}>
+            渲染 {NUM_CARDS} 张卡片
+          </Descriptions.Item>
           <Descriptions.Item label={'统计指标'}>
             使用 React 的 &lt;Profiler /&gt; 组件统计渲染完成时间
           </Descriptions.Item>
@@ -55,7 +59,7 @@ export default () => {
       {runCount > 0 && (
         <Flexbox style={{ marginTop: 12 }}>
           <Divider>测试结果</Divider>
-          <TestResult key={runCount} />
+          <TestResult key={runCount} usages={TestCases} />
         </Flexbox>
       )}
     </App>
