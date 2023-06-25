@@ -1,6 +1,6 @@
 import { makeStyles } from '@mui/styles';
 
-import { NUM_CARDS } from '../../pages/const';
+import { useSettings } from '@/stores/settings';
 
 const sharedItemStyles = {
   width: '5px',
@@ -55,6 +55,8 @@ const useStaticStyles = makeStyles({
 
 function MuiStaticTable() {
   const classes = useStaticStyles();
+  const NUM_CARDS = useSettings((s) => s.cardNumber);
+
   return (
     <div className={classes.container}>
       {new Array(NUM_CARDS).fill(0).map((_, i) => (

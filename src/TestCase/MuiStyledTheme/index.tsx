@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { styled } from '@mui/styles';
 
-import { NUM_CARDS } from '../../pages/const';
+import { useSettings } from '@/stores/settings';
 
 const StyledThemeContainer = styled('div')(({ theme }) => ({
   border: '1px dashed #ccc',
@@ -68,21 +68,25 @@ const StyledThemeItemSeven = styled('div')(({ theme }) => ({
   background: 'pink',
 }));
 
-const MuiStyledThemeTable = () => (
-  <StyledThemeContainer>
-    {new Array(NUM_CARDS).fill(0).map((_, i) => (
-      <StyledThemeCardContainer key={i}>
-        Card {i}
-        <StyledThemeItemOne />
-        <StyledThemeItemTwo />
-        <StyledThemeItemThree />
-        <StyledThemeItemFour />
-        <StyledThemeItemFive />
-        <StyledThemeItemSix />
-        <StyledThemeItemSeven />
-      </StyledThemeCardContainer>
-    ))}
-  </StyledThemeContainer>
-);
+const MuiStyledThemeTable = () => {
+  const NUM_CARDS = useSettings((s) => s.cardNumber);
+
+  return (
+    <StyledThemeContainer>
+      {new Array(NUM_CARDS).fill(0).map((_, i) => (
+        <StyledThemeCardContainer key={i}>
+          Card {i}
+          <StyledThemeItemOne />
+          <StyledThemeItemTwo />
+          <StyledThemeItemThree />
+          <StyledThemeItemFour />
+          <StyledThemeItemFive />
+          <StyledThemeItemSix />
+          <StyledThemeItemSeven />
+        </StyledThemeCardContainer>
+      ))}
+    </StyledThemeContainer>
+  );
+};
 
 export default MuiStyledThemeTable;

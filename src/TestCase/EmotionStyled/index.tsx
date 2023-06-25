@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import { NUM_CARDS } from '../../pages/const';
+import { useSettings } from '@/stores/settings';
 
 const EmotionStyledContainer = styled.div`
   border: 1px dashed #ccc;
@@ -68,6 +68,8 @@ const EmotionStyledItemSeven = styled.div`
 `;
 
 function EmotionStyledTable() {
+  const NUM_CARDS = useSettings((s) => s.cardNumber);
+
   return (
     <EmotionStyledContainer>
       {new Array(NUM_CARDS).fill(0).map((_, i) => (

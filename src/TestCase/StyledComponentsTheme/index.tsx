@@ -2,7 +2,7 @@
 
 import { styled } from 'styled-components';
 
-import { NUM_CARDS } from '../../pages/const';
+import { useSettings } from '@/stores/settings';
 
 const StyledThemeContainer = styled('div')(({ theme }) => ({
   border: '1px dashed #ccc',
@@ -69,21 +69,25 @@ const StyledThemeItemSeven = styled('div')(({ theme }) => ({
   background: 'pink',
 }));
 
-const StyledComponentTheme = () => (
-  <StyledThemeContainer>
-    {new Array(NUM_CARDS).fill(0).map((_, i) => (
-      <StyledThemeCardContainer key={i}>
-        Card {i}
-        <StyledThemeItemOne />
-        <StyledThemeItemTwo />
-        <StyledThemeItemThree />
-        <StyledThemeItemFour />
-        <StyledThemeItemFive />
-        <StyledThemeItemSix />
-        <StyledThemeItemSeven />
-      </StyledThemeCardContainer>
-    ))}
-  </StyledThemeContainer>
-);
+const StyledComponentTheme = () => {
+  const NUM_CARDS = useSettings((s) => s.cardNumber);
+
+  return (
+    <StyledThemeContainer>
+      {new Array(NUM_CARDS).fill(0).map((_, i) => (
+        <StyledThemeCardContainer key={i}>
+          Card {i}
+          <StyledThemeItemOne />
+          <StyledThemeItemTwo />
+          <StyledThemeItemThree />
+          <StyledThemeItemFour />
+          <StyledThemeItemFive />
+          <StyledThemeItemSix />
+          <StyledThemeItemSeven />
+        </StyledThemeCardContainer>
+      ))}
+    </StyledThemeContainer>
+  );
+};
 
 export default StyledComponentTheme;

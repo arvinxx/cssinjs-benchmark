@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import { FC, PropsWithChildren } from 'react';
 
-import { NUM_CARDS } from '../../pages/const';
+import { useSettings } from '@/stores/settings';
 
 const MuiBoxContainer: FC<PropsWithChildren> = ({ children }) => (
   <Box
@@ -48,21 +48,25 @@ const MuiBoxItemSeven = () => (
   <Box width="5px" height="5px" ml="5px" bgcolor="pink" />
 );
 
-const MuiBox: FC = () => (
-  <MuiBoxContainer>
-    {new Array(NUM_CARDS).fill(0).map((_, i) => (
-      <MuiBoxCardContainer key={i}>
-        Card {i}
-        <MuiBoxItemOne />
-        <MuiBoxItemTwo />
-        <MuiBoxItemThree />
-        <MuiBoxItemFour />
-        <MuiBoxItemFive />
-        <MuiBoxItemSix />
-        <MuiBoxItemSeven />
-      </MuiBoxCardContainer>
-    ))}
-  </MuiBoxContainer>
-);
+const MuiBox: FC = () => {
+  const NUM_CARDS = useSettings((s) => s.cardNumber);
+
+  return (
+    <MuiBoxContainer>
+      {new Array(NUM_CARDS).fill(0).map((_, i) => (
+        <MuiBoxCardContainer key={i}>
+          Card {i}
+          <MuiBoxItemOne />
+          <MuiBoxItemTwo />
+          <MuiBoxItemThree />
+          <MuiBoxItemFour />
+          <MuiBoxItemFive />
+          <MuiBoxItemSix />
+          <MuiBoxItemSeven />
+        </MuiBoxCardContainer>
+      ))}
+    </MuiBoxContainer>
+  );
+};
 
 export default MuiBox;

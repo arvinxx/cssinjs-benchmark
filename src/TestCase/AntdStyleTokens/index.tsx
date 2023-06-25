@@ -1,7 +1,7 @@
 import { createStyles } from 'antd-style';
 
+import { useSettings } from '@/stores/settings';
 import { FC } from 'react';
-import { NUM_CARDS } from '../../pages/const';
 
 const sharedItemStyles = {
   width: '5px',
@@ -56,6 +56,7 @@ const useStyles = createStyles(({ token }) => ({
 
 const AntdStyleTokens: FC = () => {
   const { styles } = useStyles();
+  const NUM_CARDS = useSettings((s) => s.cardNumber);
 
   return (
     <div className={styles.container}>

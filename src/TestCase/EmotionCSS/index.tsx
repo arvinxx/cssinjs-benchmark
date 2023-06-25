@@ -1,6 +1,6 @@
 import { css } from '@emotion/css';
 
-import { NUM_CARDS } from '../../pages/const';
+import { useSettings } from '@/stores/settings';
 
 const container = css`
   border: 1px dashed #ccc;
@@ -67,21 +67,25 @@ const seven = css`
   background: pink;
 `;
 
-const EmotionCSS = () => (
-  <div className={container}>
-    {new Array(NUM_CARDS).fill(0).map((_, i) => (
-      <div className={card} key={i}>
-        Card {i}
-        <div className={one} />
-        <div className={two} />
-        <div className={three} />
-        <div className={four} />
-        <div className={five} />
-        <div className={six} />
-        <div className={seven} />
-      </div>
-    ))}
-  </div>
-);
+const EmotionCSS = () => {
+  const NUM_CARDS = useSettings((s) => s.cardNumber);
+
+  return (
+    <div className={container}>
+      {new Array(NUM_CARDS).fill(0).map((_, i) => (
+        <div className={card} key={i}>
+          Card {i}
+          <div className={one} />
+          <div className={two} />
+          <div className={three} />
+          <div className={four} />
+          <div className={five} />
+          <div className={six} />
+          <div className={seven} />
+        </div>
+      ))}
+    </div>
+  );
+};
 
 export default EmotionCSS;

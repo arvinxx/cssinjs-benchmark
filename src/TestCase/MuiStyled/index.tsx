@@ -1,6 +1,6 @@
 import { styled } from '@mui/styles';
 
-import { NUM_CARDS } from '../../pages/const';
+import { useSettings } from '@/stores/settings';
 
 const StyledContainer = styled('div')({
   border: '1px dashed #ccc',
@@ -67,21 +67,25 @@ const StyledItemSeven = styled('div')({
   background: 'pink',
 });
 
-const MuiStyledTable = () => (
-  <StyledContainer>
-    {new Array(NUM_CARDS).fill(0).map((_, i) => (
-      <StyledCardContainer key={i}>
-        Card {i}
-        <StyledItemOne />
-        <StyledItemTwo />
-        <StyledItemThree />
-        <StyledItemFour />
-        <StyledItemFive />
-        <StyledItemSix />
-        <StyledItemSeven />
-      </StyledCardContainer>
-    ))}
-  </StyledContainer>
-);
+const MuiStyledTable = () => {
+  const NUM_CARDS = useSettings((s) => s.cardNumber);
+
+  return (
+    <StyledContainer>
+      {new Array(NUM_CARDS).fill(0).map((_, i) => (
+        <StyledCardContainer key={i}>
+          Card {i}
+          <StyledItemOne />
+          <StyledItemTwo />
+          <StyledItemThree />
+          <StyledItemFour />
+          <StyledItemFive />
+          <StyledItemSix />
+          <StyledItemSeven />
+        </StyledCardContainer>
+      ))}
+    </StyledContainer>
+  );
+};
 
 export default MuiStyledTable;

@@ -5,8 +5,8 @@ import { useCallback, useState } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
 import { TestResult } from '@/components/TestResult';
-import { NUM_CARDS } from './const';
 
+import { useSettings } from '@/stores/settings';
 import { TestCases } from '../TestCase';
 
 const useStyles = createStyles(({ css, token }) => {
@@ -22,6 +22,7 @@ const useStyles = createStyles(({ css, token }) => {
 export default () => {
   const { styles } = useStyles();
   const [runCount, setRunCount] = useState(0);
+  const NUM_CARDS = useSettings((s) => s.cardNumber);
 
   const onClickRun = useCallback(() => {
     let nextRunCount = runCount + 1;
