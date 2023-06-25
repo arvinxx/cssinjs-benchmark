@@ -2,7 +2,7 @@ import { Card } from 'antd';
 import { createStyles } from 'antd-style';
 import { FC, Profiler, useCallback, useState } from 'react';
 
-import { demoPathPrefix } from '../TestCase';
+import { demoPathPrefix } from '../pages/LargeContent/TestCase';
 
 let max = 0;
 
