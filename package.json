@@ -2,6 +2,7 @@
   "name": "umi-simple-web-template",
   "version": "1.2.0",
   "private": true,
+  "repository": "https://github.com/arvinxx/umi-simple-web-template.git",
   "scripts": {
     "build": "max build",
     "build:analyze": "ANALYZE=1 max build",
@@ -20,17 +21,17 @@
     ]
   },
   "dependencies": {
+    "@ant-design/icons": "^5",
+    "@emotion/css": "^11",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
+    "@material-ui/core": "^4",
     "antd": "^5",
     "antd-style": "^3",
     "react": "^18",
     "react-dom": "^18",
-    "@emotion/react": "^11",
-    "@emotion/styled": "^11",
-    "@emotion/css": "^11",
-    "styled-components": "^6.0.0-rc.6",
     "react-layout-kit": "^1",
-    "@ant-design/icons": "^5",
-    "@material-ui/core": "^4"
+    "styled-components": "^6.0.0-rc.6"
   },
   "devDependencies": {
     "@emotion/jest": "^11",
@@ -55,6 +56,5 @@
     "ts-node": "^10",
     "typescript": "^4",
     "vercel": "^28"
-  },
-  "repository": "https://github.com/arvinxx/umi-simple-web-template.git"
+  }
 }

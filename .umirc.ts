@@ -9,4 +9,8 @@ export default defineConfig({
     },
   ],
   mfsu: false,
+  externals: {
+    react: 'React',
+    'react-dom': 'ReactDOM',
+  },
 });
