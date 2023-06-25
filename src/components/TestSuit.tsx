@@ -2,8 +2,6 @@ import { Card } from 'antd';
 import { createStyles } from 'antd-style';
 import { FC, Profiler, useCallback, useState } from 'react';
 
-import { demoPathPrefix } from '../pages/LargeContent/TestCase';
-
 let max = 0;
 
 const useStyles = createStyles(({ css, token }) => ({
@@ -34,9 +32,15 @@ interface TestSuitProps {
   name: string;
   Component: FC;
   path?: string;
+  pathPrefix: string;
 }
 
-export const TestSuit: FC<TestSuitProps> = ({ Component, name, path }) => {
+export const TestSuit: FC<TestSuitProps> = ({
+  Component,
+  name,
+  path,
+  pathPrefix,
+}) => {
   const { styles, cx } = useStyles();
 
   const [perf, setPerf] = useState<number | null>(null);
@@ -65,13 +69,26 @@ export const TestSuit: FC<TestSuitProps> = ({ Component, name, path }) => {
   return (
     <Card
       title={
-        <a href={demoPathPrefix + path} target="_blank" className={styles.title} rel="noreferrer">
+        <a
+          href={pathPrefix + path}
+          target="_blank"
+          className={styles.title}
+          rel="noreferrer"
+        >
           {name} <CodeOutlined />
         </a>
       }
       style={{ width: 300 }}
       extra={
-        <div className={cx(time >= 300 ? styles.error : time >= 16 ? styles.warning : styles.time)}>
+        <div
+          className={cx(
+            time >= 300
+              ? styles.error
+              : time >= 16
+              ? styles.warning
+              : styles.time,
+          )}
+        >
           {time}ms
         </div>
       }

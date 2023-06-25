@@ -5,8 +5,9 @@ import { TestSuit } from './TestSuit';
 
 interface TestResultProps {
   usages: Usage[];
+  pathPrefix: string;
 }
-export const TestResult: FC<TestResultProps> = ({ usages }) => {
+export const TestResult: FC<TestResultProps> = ({ usages, pathPrefix }) => {
   return (
     <Flexbox gap={24}>
       {usages.map((item) => (
@@ -25,6 +26,7 @@ export const TestResult: FC<TestResultProps> = ({ usages }) => {
                 name={testCase.name}
                 path={testCase.path}
                 Component={testCase.component}
+                pathPrefix={pathPrefix}
               />
             ))}
           </Flexbox>

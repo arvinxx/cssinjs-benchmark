@@ -7,7 +7,7 @@ import { Flexbox } from 'react-layout-kit';
 import { TestResult } from '@/components/TestResult';
 
 import { useSettings } from '@/stores/settings';
-import { TestCases } from './TestCase';
+import { demoPathPrefix, TestCases } from './TestCase';
 
 const useStyles = createStyles(({ css, token }) => {
   return {
@@ -48,11 +48,14 @@ export default () => {
         }
       >
         <Descriptions layout={'vertical'}>
-          <Descriptions.Item label={'测试基准'}>
-            渲染 {NUM_CARDS} 张卡片
+          <Descriptions.Item label={'测试方式'}>
+            渲染 {NUM_CARDS} 相同张卡片
           </Descriptions.Item>
           <Descriptions.Item label={'统计指标'}>
             使用 React 的 &lt;Profiler /&gt; 组件统计渲染完成时间
+          </Descriptions.Item>
+          <Descriptions.Item label={'测试目的'}>
+            验证相同样式的渲染逻辑在不同的样式库中的性能表现
           </Descriptions.Item>
         </Descriptions>
       </Card>
@@ -60,7 +63,11 @@ export default () => {
       {runCount > 0 && (
         <Flexbox style={{ marginTop: 12 }}>
           <Divider>测试结果</Divider>
-          <TestResult key={runCount} usages={TestCases} />
+          <TestResult
+            key={runCount}
+            usages={TestCases}
+            pathPrefix={demoPathPrefix}
+          />
         </Flexbox>
       )}
     </App>
