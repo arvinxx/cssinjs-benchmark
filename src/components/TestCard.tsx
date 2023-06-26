@@ -17,6 +17,7 @@ const TestCard: FC<TestCardProps> = ({
   testMethod,
   testObject,
   testIndex,
+  title,
 }) => {
   const onClickRun = useCallback(() => {
     let nextRunCount = runCount + 1;
@@ -28,7 +29,7 @@ const TestCard: FC<TestCardProps> = ({
 
   return (
     <Card
-      title={'单次渲染性能对比'}
+      title={title}
       extra={
         <Button
           type={'primary'}

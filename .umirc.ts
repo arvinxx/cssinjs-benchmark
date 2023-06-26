@@ -8,8 +8,8 @@ export default defineConfig({
       component: '@/pages/index',
     },
     {
-      path: '/re-render',
-      component: '@/pages/ReRender',
+      path: '/dynamic-value',
+      component: '@/pages/DynamicValue',
     },
     {
       path: '/large-content',

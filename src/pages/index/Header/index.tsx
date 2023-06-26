@@ -30,10 +30,10 @@ const Header: FC<HeaderProps> = ({ mode, onModeChange }) => {
 
         <Segmented
           value={mode}
-          onChange={onModeChange}
+          onChange={onModeChange as any}
           options={[
-            { label: 'Basic 测试', value: 'largeContent' },
-            { label: 'ReRender 测试', value: 'reRender' },
+            { label: '基础测试测试', value: 'largeContent' },
+            { label: '动态变量测试', value: 'reRender' },
           ]}
         />
 
