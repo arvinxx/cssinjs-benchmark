@@ -6,7 +6,11 @@ import GithubButton from './GithubButton';
 
 import { useStyle } from './style';
 
-const Header: FC = () => {
+interface HeaderProps {
+  mode: string;
+  onModeChange: (mode: string) => void;
+}
+const Header: FC<HeaderProps> = ({ mode, onModeChange }) => {
   const { styles } = useStyle();
 
   return (
@@ -18,16 +22,18 @@ const Header: FC = () => {
         width={'auto'}
         className={styles.content}
       >
-        <Flexbox horizontal className={styles.left}>
+        <Flexbox horizontal>
           <Typography.Text strong style={{ fontSize: 16 }}>
             CSSinJS Benchmark
           </Typography.Text>
         </Flexbox>
 
         <Segmented
+          value={mode}
+          onChange={onModeChange}
           options={[
             { label: 'Basic 测试', value: 'largeContent' },
-            { label: 'ReRender 测试', value: 'rerender' },
+            { label: 'ReRender 测试', value: 'reRender' },
           ]}
         />
 

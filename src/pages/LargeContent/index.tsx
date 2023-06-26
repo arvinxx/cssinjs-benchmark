@@ -6,14 +6,26 @@ import TestCard from '@/components/TestCard';
 import { TestResult } from '@/components/TestResult';
 
 import { useSettings } from '@/stores/settings';
+import { createStyles } from 'antd-style';
 import { demoPathPrefix, TestCases } from './TestCase';
+
+const useStyles = createStyles(({ css, token }) => {
+  return {
+    container: css`
+      padding: 24px;
+      min-height: 100vh;
+      background: ${token.colorBgLayout};
+    `,
+  };
+});
 
 export default () => {
   const [runCount, setRunCount] = useState(0);
   const NUM_CARDS = useSettings((s) => s.cardNumber);
+  const { styles } = useStyles();
 
   return (
-    <>
+    <div className={styles.container}>
       <TestCard
         title={'单次渲染基础性能对比'}
         runCount={runCount}
@@ -33,6 +45,6 @@ export default () => {
           />
         </Flexbox>
       )}
-    </>
+    </div>
   );
 };

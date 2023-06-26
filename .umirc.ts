@@ -7,6 +7,14 @@ export default defineConfig({
       path: '/',
       component: '@/pages/index',
     },
+    {
+      path: '/re-render',
+      component: '@/pages/ReRender',
+    },
+    {
+      path: '/large-content',
+      component: '@/pages/LargeContent',
+    },
   ],
   mfsu: false,
   externals: {

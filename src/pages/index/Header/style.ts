@@ -20,7 +20,6 @@ export const useStyle = createStyles(({ css, responsive, token }) => ({
       padding: 0 12px;
     }
   `,
-  left: css``,
   right: css`
     display: flex;
     justify-content: space-between;
