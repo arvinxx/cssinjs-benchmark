@@ -1,4 +1,5 @@
 import { createStyles } from 'antd-style';
+import { memo } from 'react';
 
 import { getTable, toPercent } from '@/pages/DynamicValue/utils';
 
@@ -11,10 +12,12 @@ const useValueStyles = createStyles(({ css }, value: number) => ({
   `,
 }));
 
-const Cell = ({ value }: { value: number }) => {
+const Cell = memo<{ value: number }>(({ value }) => {
   const { styles } = useValueStyles(value);
   return <div className={styles.cellClass}>{toPercent(value)}</div>;
-};
+});
+
+// =================================== Table =================================== //
 
 const useStaticStyles = createStyles(({ css }) => ({
   container: {
@@ -32,8 +35,6 @@ const useStaticStyles = createStyles(({ css }) => ({
     display: table-row;
   `,
 }));
-
-// =================================== Table =================================== //
 
 const AntdStyleProps = () => {
   const { styles } = useStaticStyles();
