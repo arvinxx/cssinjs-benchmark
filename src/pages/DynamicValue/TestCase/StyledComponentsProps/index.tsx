@@ -24,6 +24,10 @@ const CellDefault = styled.div`
   padding: 10px;
 `;
 
+const Cell = styled(CellDefault)`
+  background: rgba(74, 174, 53, ${(props) => (props as any).value});
+`;
+
 const EmotionStyledTable = () => {
   const table = getTable();
 
@@ -33,12 +37,13 @@ const EmotionStyledTable = () => {
         {table.map((row, i) => (
           <Row key={i}>
             {row.map((x, j) => (
-              <CellDefault
+              <Cell
                 key={`${i}${j}`}
-                style={{ background: `rgba(74, 174, 53, ${x})` }}
+                // @ts-ignore
+                value={x}
               >
                 {toPercent(x)}
-              </CellDefault>
+              </Cell>
             ))}
           </Row>
         ))}

@@ -16,12 +16,12 @@ import MuiStyledTheme from './MuiStyledTheme';
 import CSSModules from './CSSModules';
 import PureCss from './PureCSS';
 
+import { repoBaseUrl } from '@/const';
 import AntdStyleTokens from './AntdStyleTokens';
 import StyledComponents from './StyledComponents';
 import StyledComponentsTheme from './StyledComponentsTheme';
 
-export const demoPathPrefix =
-  'https://github.com/arvinxx/cssinjs-benchmark/tree/master/src/pages/LargeContent/TestCase';
+export const demoPathPrefix = `${repoBaseUrl}/src/pages/LargeContent/TestCase`;
 
 export const TestCases: Usage[] = [
   {

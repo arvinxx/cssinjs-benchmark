@@ -1,3 +1,4 @@
+import { repoBaseUrl } from '@/const';
 import { Usage } from '@/types/testCase';
 
 import AntdStyleFunc from './AntdStyleFunc';
@@ -7,17 +8,24 @@ import AntdStyleStatic from './AntdStyleStatic';
 import EmotionCSS from './EmotionCSS';
 import EmotionReact from './EmotionReact';
 import EmotionStyled from './EmotionStyled';
+import EmotionStyledProps from './EmotionStyledProps';
 
 import PureReact from './React';
-import StyledComponents from './StyledComponents';
 
-export const demoPathPrefix =
-  'https://github.com/arvinxx/cssinjs-benchmark/tree/master/src/pages/LargeContent/TestCase';
+import StyledComponents from './StyledComponents';
+import StyledComponentsProps from './StyledComponentsProps';
+
+export const demoPathPrefix = `${repoBaseUrl}/src/pages/DynamicValue/TestCase`;
 
 export const TestCases: Usage[] = [
   {
-    name: 'Pure React',
+    name: 'Pure Style',
     cases: [
+      {
+        name: 'CSS Modules',
+        component: PureReact,
+        path: '/CSSModules/index.tsx',
+      },
       { name: 'Pure React', component: PureReact, path: '/React/index.tsx' },
     ],
   },
@@ -52,7 +60,12 @@ export const TestCases: Usage[] = [
       {
         name: 'Emotion Styled',
         component: EmotionStyled,
-        path: '/EmotionCSS/index.tsx',
+        path: '/EmotionStyled/index.tsx',
+      },
+      {
+        name: 'Emotion Styled Props',
+        component: EmotionStyledProps,
+        path: '/EmotionStyledProps/index.tsx',
       },
       {
         name: 'Emotion React CSS',
@@ -68,6 +81,11 @@ export const TestCases: Usage[] = [
         name: 'StyledComponents',
         component: StyledComponents,
         path: '/StyledComponents/index.tsx',
+      },
+      {
+        name: 'StyledComponents Props',
+        component: StyledComponentsProps,
+        path: '/StyledComponentsProps/index.tsx',
       },
     ],
   },

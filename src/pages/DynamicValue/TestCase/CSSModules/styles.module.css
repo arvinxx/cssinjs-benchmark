@@ -1,0 +1,21 @@
+.container {
+  border: 1px dashed #ccc;
+  padding: 4px;
+  height: 150px;
+  overflow: auto;
+  width: 120px;
+}
+
+.tableClass {
+  display: table;
+  margin-top: 10px;
+}
+
+.rowClass {
+  display: table-row;
+}
+
+.cellClass {
+  display: table-cell;
+  padding: 10px;
+}
